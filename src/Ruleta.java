@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Random;
 import java.util.Scanner;
 public class Ruleta {
@@ -12,7 +13,6 @@ public class Ruleta {
 /**
  * Método principal: inicia el programa llamando al menú.
  */
-2
     public static void main(String[] args) {
         menu();
     }
@@ -42,7 +42,16 @@ public class Ruleta {
  * Inicia una ronda de la ruleta: leer apuesta, girar, evaluar y mostrar resultado.
  * @param in Scanner para entrada por consola.
  */
-public static void iniciarRonda(Scanner in) {}
+public static void iniciarRonda(Scanner in) {
+    System.out.print("/ningrese el monto que quiere apostar: ");
+    int apuesta = in.nextInt();
+
+    char tipo = leerTipoApuesta(in);
+    int numero = girarRuleta();
+    boolean gano = evaluarResultado(numero, tipo);
+    registrarResultado(numero, apuesta, gano);
+    mostrarResultado(numero,tipo, apuesta, gano);
+}
     /**
      * Permite al usuario seleccionar el tipo de apuesta (R/N/P/I).
      * @param in Scanner para entrada por consola.
@@ -50,7 +59,9 @@ public static void iniciarRonda(Scanner in) {}
      * @return el tipo de apuesta elegido.
      */
     public static char leerTipoApuesta(Scanner in) {
-        return ’ ’;
+        System.out.print("ingrese tipo de apuesta (R: roojo, N:negro, I:Impar, P:Par)");
+        return
+                in.next().toUpperCase().charAt(0);
     }
     /**
      * Simula el giro de la ruleta generando un número aleatorio de 0 a 36.
@@ -90,7 +101,15 @@ public static void registrarResultado(int numero, int apuesta, boolean acierto) 
      * @param acierto si el jugador ganó o perdió.
      */
     public static void mostrarResultado(int numero, char tipo, int monto, boolean
-            acierto) {}
+            acierto) {
+        System.out.println("n RESULTADO");
+                System.out.println("el numero ganador es" + numero);
+        if (acierto) {
+            System.out.println("Felicidades ganaste" + monto);
+        } else{
+            System.out.println("Perdiste" + monto);
+        }
+    }
     /**
      * Muestra estadísticas generales de todas las rondas jugadas.
      */

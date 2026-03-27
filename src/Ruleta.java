@@ -13,32 +13,58 @@ public class Ruleta {
 /**
  * Método principal: inicia el programa llamando al menú.
  */
-    public static void main(String[] args) {
-        menu();
-    }
+public static void main(String[] args) {
+    menu();
+}
     /**
      * Controla el flujo principal del programa mostrando un menú en consola.
      */
-    public static void menu() {}
-    /**
+    public static void menu() {
+        Scanner in = new Scanner(System.in);
+        int opcion;
+        do {
+            mostrarMenu();
+            opcion = leerOpcion(in);
+            ejecutarOpcion(opcion, in);
+        } while (opcion != 3);
+        in.close();
+    }    /**
      * Muestra en consola las opciones disponibles del menú.
      */
-    public static void mostrarMenu() {}
-    /**
+    public static void mostrarMenu() {
+        System.out.println("\n--- CASINO BLACK CAT ---");
+        System.out.println("1. Jugar a la Ruleta");
+        System.out.println("2. Ver Estadísticas");
+        System.out.println("3. Retirarse (Salir)");
+        System.out.print("Elija una opción: ");
+    }    /**
      * Lee la opción elegida por el usuario desde teclado.
      * @param in Scanner para entrada por consola.
      * @return número de opción ingresado.
      */
     public static int leerOpcion(Scanner in) {
-        return 0;
+        return in.nextInt();
     }
     /**
      * Ejecuta la acción correspondiente a la opción del menú.
      * @param opcion opción elegida por el usuario.
      * @param in Scanner para entrada por consola.
      */
-    public static void ejecutarOpcion(int opcion, Scanner in) {}
-/**
+    public static void ejecutarOpcion(int opcion, Scanner in) {
+        switch (opcion) {
+            case 1:
+                iniciarRonda(in);
+                break;
+            case 2:
+                mostrarEstadisticas();
+                break;
+            case 3:
+                System.out.println("Gracias por visitar el Casino Black Cat de Don Donnie.");
+                break;
+            default:
+                System.out.println("Opción inválida. Intente de nuevo.");
+        }
+    }/**
  * Inicia una ronda de la ruleta: leer apuesta, girar, evaluar y mostrar resultado.
  * @param in Scanner para entrada por consola.
  */
@@ -101,15 +127,8 @@ public static void registrarResultado(int numero, int apuesta, boolean acierto) 
      * @param acierto si el jugador ganó o perdió.
      */
     public static void mostrarResultado(int numero, char tipo, int monto, boolean
-            acierto) {
-        System.out.println("n RESULTADO");
-                System.out.println("el numero ganador es" + numero);
-        if (acierto) {
-            System.out.println("Felicidades ganaste" + monto);
-        } else{
-            System.out.println("Perdiste" + monto);
-        }
-    }
+            acierto) {}
+
     /**
      * Muestra estadísticas generales de todas las rondas jugadas.
      */

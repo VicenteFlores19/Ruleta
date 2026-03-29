@@ -69,7 +69,7 @@ public static void main(String[] args) {
  * @param in Scanner para entrada por consola.
  */
 public static void iniciarRonda(Scanner in) {
-    System.out.print("/ningrese el monto que quiere apostar: ");
+    System.out.print("\ningrese el monto que quiere apostar: ");
     int apuesta = in.nextInt();
 
     char tipo = leerTipoApuesta(in);
@@ -85,7 +85,7 @@ public static void iniciarRonda(Scanner in) {
      * @return el tipo de apuesta elegido.
      */
     public static char leerTipoApuesta(Scanner in) {
-        System.out.print("ingrese tipo de apuesta (R: roojo, N:negro, I:Impar, P:Par)");
+        System.out.print("ingrese tipo de apuesta (R: rojo, N:negro, I:Impar, P:Par): ");
         return
                 in.next().toUpperCase().charAt(0);
     }
@@ -94,7 +94,7 @@ public static void iniciarRonda(Scanner in) {
      * @return número de la ruleta.
      */
     public static int girarRuleta() {
-        return 0;
+        return rng.nextInt(37);
     }
 /*** Evalúa si la apuesta realizada por el jugador fue acertada.
  * @param numero número obtenido en la ruleta.
@@ -102,7 +102,16 @@ public static void iniciarRonda(Scanner in) {
  * @return true si acertó, false si perdió.
  */
 public static boolean evaluarResultado(int numero, char tipo) {
-    return false;
+    if (numero == 0) {
+        return false;
+    }
+    switch (Character.toUpperCase(tipo)) {
+        case 'P': return numero % 2 == 0;
+        case 'I': return numero % 2 != 0;
+        case 'R': return esRojo(numero);
+        case 'N': return !esRojo(numero);
+        default: return false;
+    }
 }
     /**
      * Determina si un número corresponde a color rojo.
@@ -110,6 +119,11 @@ public static boolean evaluarResultado(int numero, char tipo) {
      * @return true si es rojo, false en caso contrario.
      */
     public static boolean esRojo(int n) {
+        for (int rojo : numerosRojos) {
+            if (n == rojo) {
+                return true;
+            }
+        }
         return false;
     }
 /**
@@ -118,7 +132,16 @@ public static boolean evaluarResultado(int numero, char tipo) {
  * @param apuesta monto apostado.
  * @param acierto si el jugador acertó o no.
  */
-public static void registrarResultado(int numero, int apuesta, boolean acierto) {}
+public static void registrarResultado(int numero, int apuesta, boolean acierto) {
+    if (historialSize < MAX_HISTORIAL) {
+        historialNumeros[historialSize] = numero;
+        historialApuestas[historialSize] = apuesta;
+        historialAciertos[historialSize] = acierto;
+        historialSize++;
+    } else {
+        System.out.println("Historial lleno. No se pueden registrar más rondas.");
+    }
+}
     /**
      * Muestra en consola el resultado de la ronda.
      * @param numero número obtenido en la ruleta.
@@ -126,11 +149,41 @@ public static void registrarResultado(int numero, int apuesta, boolean acierto) 
      * @param monto monto apostado.
      * @param acierto si el jugador ganó o perdió.
      */
-    public static void mostrarResultado(int numero, char tipo, int monto, boolean
-            acierto) {}
+    public static void mostrarResultado(int numero, char tipo, int monto, boolean acierto) {
+        System.out.println("\n--- RESULTADO ---");
+        System.out.println("La ruleta giró y cayó en: " + numero);
+        if (acierto) {
+            System.out.println("¡Felicidades! Ganaste " + monto + " fichas.");
+        } else {
+            System.out.println("Suerte para la próxima. Perdiste " + monto + " fichas.");
+        }
+    }
 
     /**
      * Muestra estadísticas generales de todas las rondas jugadas.
      */
-    public static void mostrarEstadisticas() {}
+    public static void mostrarEstadisticas() {
+        System.out.println("\n--- ESTADÍSTICAS DEL JUGADOR ---");
+        if (historialSize == 0) {
+            System.out.println("Aún no has jugado ninguna ronda.");
+            return;
+        }
+
+        int apostado = 0, aciertos = 0, balanceNeta = 0;
+        for (int i = 0; i < historialSize; i++) {
+            apostado += historialApuestas[i];
+            if (historialAciertos[i]) {
+                aciertos++;
+                balanceNeta += historialApuestas[i];
+            } else {
+                balanceNeta -= historialApuestas[i];
+            }
+        }
+
+        System.out.println("Rondas jugadas: " + historialSize);
+        System.out.println("Total apostado: " + apostado);
+        System.out.println("Total aciertos: " + aciertos);
+        System.out.println("Porcentaje de acierto: " + (aciertos * 100.0 / historialSize) + "%");
+        System.out.println("Balance Neto: " + balanceNeta);
+    }
 }

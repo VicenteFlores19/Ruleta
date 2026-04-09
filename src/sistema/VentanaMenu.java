@@ -76,9 +76,11 @@ public class VentanaMenu {
     /**
      * Acción para el botón Jugar.
      */
+    /**
+     * Acción para el botón Jugar.
+     */
     private void abrirJuego() {
-        // Dejamos este mensaje temporal hasta que creemos la VentanaJuego
-        JOptionPane.showMessageDialog(frame, "La Ventana de Juego se implementará en el próximo paso.");
+        new VentanaJuego().mostrarVentana();
     }
 
     /**

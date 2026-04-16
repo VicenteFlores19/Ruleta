@@ -1,11 +1,7 @@
-package juego;
+package Modelo;
 
 import java.util.Random;
 
-/**
- * Clase que representa el motor lógico del juego de la Ruleta.
- * Aplica el Principio de Responsabilidad Única (SRP): Solo calcula, no muestra nada en pantalla.
- */
 public class Ruleta {
 
     // --- ESTADO INTERNO (Atributos) ---
@@ -22,17 +18,24 @@ public class Ruleta {
         this.saldo = saldoInicial;
     }
 
+    // Constructor por defecto (saldo cero)
+    public Ruleta() {
+        this.rng = new Random();
+        this.saldo = 0;
+    }
+
     // --- GETTERS ---
     public int getSaldo() {
         return saldo;
     }
 
-    // --- REGLAS DE NEGOCIO (Métodos) ---
+    // Método de negocio para recargar saldo
+    public void depositar(int monto) {
+        if (monto > 0) {
+            this.saldo += monto;
+        }
+    }
 
-    /**
-     * Simula el giro de la ruleta.
-     * @return Un número aleatorio entre 0 y 36.
-     */
     public int girar() {
         return rng.nextInt(37);
     }
@@ -50,13 +53,9 @@ public class Ruleta {
     }
 
     /**
-     * Evalúa la apuesta, ajusta el saldo y determina el resultado.
-     * @param numero El número que salió en el giro.
-     * @param tipo El tipo de apuesta ('P', 'I', 'R', 'N').
-     * @param monto La cantidad de fichas apostadas.
-     * @return El monto ganado (positivo) o perdido (negativo).
+     * Evalúa la apuesta usando el ENUM.
      */
-    public int evaluarApuesta(int numero, char tipo, int monto) {
+    public int evaluarApuesta(int numero, TipoDeApuesta tipo, int monto) {
         // Regla de oro del casino: Si sale 0, las apuestas simples pierden.
         if (numero == 0) {
             this.saldo -= monto;
@@ -64,11 +63,13 @@ public class Ruleta {
         }
 
         boolean gana = false;
-        switch (Character.toUpperCase(tipo)) {
-            case 'P': gana = (numero % 2 == 0); break;
-            case 'I': gana = (numero % 2 != 0); break;
-            case 'R': gana = esRojo(numero); break;
-            case 'N': gana = !esRojo(numero); break;
+
+        // Evaluamos usando el Enum en lugar del char
+        switch (tipo) {
+            case PAR: gana = (numero % 2 == 0); break;
+            case IMPAR: gana = (numero % 2 != 0); break;
+            case ROJO: gana = esRojo(numero); break;
+            case NEGRO: gana = !esRojo(numero); break;
         }
 
         // Ajustamos el saldo según el resultado

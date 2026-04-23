@@ -8,14 +8,16 @@ public class Usuario {
     private String username;
     private String password;
     private String nombre;
+    private int saldo; // NUEVO: Atributo para el dinero
 
-    // ASOCIACIÓN 1 a N: El usuario tiene un historial de múltiples resultados [cite: 292, 362]
+    // ASOCIACIÓN 1 a N: El usuario tiene un historial
     private final List<Resultado> historial = new ArrayList<>();
 
     public Usuario(String username, String password, String nombre) {
         this.username = username;
         this.password = password;
         this.nombre = nombre;
+        this.saldo = 0; // Inicia con 0 de saldo
     }
 
     public Usuario() {
@@ -24,6 +26,10 @@ public class Usuario {
 
     public String getUsername() { return username; }
     public String getNombre() { return nombre; }
+
+    // NUEVOS MÉTODOS PARA EL SALDO
+    public int getSaldo() { return saldo; }
+    public void setSaldo(int saldo) { this.saldo = saldo; }
 
     public void setNombre(String nombre) {
         if (nombre != null && !nombre.trim().isEmpty()) {

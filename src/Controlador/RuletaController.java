@@ -1,37 +1,50 @@
 package Controlador;
 
 import Modelo.Ruleta;
+import Modelo.Resultado;
+import Modelo.Usuario;
 import Modelo.TipoDeApuesta;
 
 public class RuletaController {
     private final Ruleta ruleta;
-    private final SessionController session;
+    private final SessionController session; // Inyección de dependencia
 
-    // El controlador recibe la ruleta y la sesión para poder trabajar con ellas
-    public RuletaController(SessionController session, Ruleta ruleta) {
-        this.session = session;
+    public RuletaController(Ruleta ruleta, SessionController session) {
         this.ruleta = ruleta;
+        this.session = session;
     }
 
-    // Este método es llamado por el botón de la vista
+    // Cambiamos el nombre de "ejecutarJugada" a "jugar" para que tu VentanaJuego lo reconozca
     public String jugar(int monto, TipoDeApuesta tipo) {
-        if (monto <= 0) return "El monto debe ser mayor a 0";
-        if (monto > ruleta.getSaldo()) return "Saldo insuficiente. Vaya a su Perfil a recargar.";
+        Usuario user = session.getUsuarioActual();
 
-        int numeroQueSalio = ruleta.girar();
-        int resultadoPesos = ruleta.evaluarApuesta(numeroQueSalio, tipo, monto);
-
-        if (resultadoPesos > 0) {
-            return "¡Salió el " + numeroQueSalio + "! GANASTE $" + resultadoPesos;
-        } else {
-            return "Salió el " + numeroQueSalio + ". Perdiste $" + Math.abs(resultadoPesos);
+        // 1. Validar saldo
+        if (user.getSaldo() < monto) {
+            return "Saldo insuficiente";
         }
+
+        // 2. Girar y verificar
+        int numeroGanador = ruleta.girar();
+        boolean gano = ruleta.verificarGanador(numeroGanador, tipo);
+        int ganancia = gano ? monto : -monto; // Ajuste simple: ganas lo apostado o lo pierdes
+
+        // 3. Actualizar saldo del usuario
+        user.setSaldo(user.getSaldo() + ganancia);
+
+        // 4. Registrar en el historial (Iteración 5)
+        Resultado r = new Resultado(numeroGanador, monto, ganancia, tipo);
+        user.agregarResultado(r);
+
+        return gano ? "¡Ganaste! Salió el " + numeroGanador : "Perdiste. Salió el " + numeroGanador;
     }
 
+    // MÉTODO RESTAURADO: La ventana necesita saber el saldo para mostrarlo en el JLabel
     public int getSaldoActual() {
-        return ruleta.getSaldo();
+        // Ahora el saldo se lo pedimos al usuario de la sesión, no a la ruleta
+        return session.getUsuarioActual().getSaldo();
     }
 
+    // MÉTODO RESTAURADO: Para cuando presionas el botón "Volver" en la ventana
     public Ruleta getRuletaModelo() {
         return ruleta;
     }

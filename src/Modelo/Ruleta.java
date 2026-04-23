@@ -81,4 +81,15 @@ public class Ruleta {
             return -monto;
         }
     }
+
+    public boolean verificarGanador(int numero, TipoDeApuesta apuesta) {
+        if (numero == 0) return false; // El 0 siempre pierde en apuestas simples
+
+        return switch (apuesta) {
+            case ROJO -> esRojo(numero); // Asumiendo que tienes un método esRojo()
+            case NEGRO -> !esRojo(numero);
+            case PAR -> numero % 2 == 0;
+            case IMPAR -> numero % 2 != 0;
+        };
+    }
 }

@@ -14,21 +14,17 @@ public class RuletaController {
         this.session = session;
     }
 
-    // Cambiamos el nombre de "ejecutarJugada" a "jugar" para que tu VentanaJuego lo reconozca
     public String jugar(int monto, TipoDeApuesta tipo) {
         Usuario user = session.getUsuarioActual();
 
-        // 1. Validar saldo
         if (user.getSaldo() < monto) {
             return "Saldo insuficiente";
         }
 
-        // 2. Girar y verificar
         int numeroGanador = ruleta.girar();
         boolean gano = ruleta.verificarGanador(numeroGanador, tipo);
         int ganancia = gano ? monto : -monto; // Ajuste simple: ganas lo apostado o lo pierdes
 
-        // 3. Actualizar saldo del usuario
         user.setSaldo(user.getSaldo() + ganancia);
 
         // 4. Registrar en el historial (Iteración 5)
@@ -38,13 +34,11 @@ public class RuletaController {
         return gano ? "¡Ganaste! Salió el " + numeroGanador : "Perdiste. Salió el " + numeroGanador;
     }
 
-    // MÉTODO RESTAURADO: La ventana necesita saber el saldo para mostrarlo en el JLabel
     public int getSaldoActual() {
         // Ahora el saldo se lo pedimos al usuario de la sesión, no a la ruleta
         return session.getUsuarioActual().getSaldo();
     }
 
-    // MÉTODO RESTAURADO: Para cuando presionas el botón "Volver" en la ventana
     public Ruleta getRuletaModelo() {
         return ruleta;
     }

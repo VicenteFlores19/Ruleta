@@ -31,4 +31,8 @@ public class RuletaController {
     public int getSaldoActual() {
         return ruleta.getSaldo();
     }
+
+    public Ruleta getRuletaModelo() {
+        return ruleta;
+    }
 }

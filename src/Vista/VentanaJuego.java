@@ -79,7 +79,7 @@ public class VentanaJuego {
 
     private void volver() {
         frame.dispose();
-        // Volvemos al menú pasándole la misma sesión intacta
-        new VentanaMenu(session).mostrarVentana();
+        // Ahora le devolvemos la ruleta con nuestro saldo al menú
+        new VentanaMenu(session, ruletaController.getRuletaModelo()).mostrarVentana();
     }
 }

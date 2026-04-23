@@ -24,8 +24,13 @@ public class VentanaMenu {
      */
     public VentanaMenu(SessionController session) {
         this.session = session;
-        // Iniciamos la ruleta con saldo 0 como pide el PDF
         this.ruleta = new Ruleta(0);
+        configurarVentana();
+    }
+
+    public VentanaMenu(SessionController session, Modelo.Ruleta ruletaExistente) {
+        this.session = session;
+        this.ruleta = ruletaExistente; // Usamos la que ya tiene el saldo
         configurarVentana();
     }
 
@@ -75,8 +80,7 @@ public class VentanaMenu {
 
         // Obtenemos el nombre mediante el Getter de la sesión
         String saludo = "<html><h2>Bienvenido, " + session.getNombreUsuario() + "</h2>";
-        String info = "<p>Use el panel lateral para navegar por el casino.</p></html>";
-
+        String info = "<html><p>Use el panel lateral para navegar por el casino.</p></html>";
         lblNombreActivo = new JLabel(saludo);
         // Mostramos el saldo actual usando el Getter del modelo
         lblSaldoActivo = new JLabel("Saldo en cuenta: $" + ruleta.getSaldo());

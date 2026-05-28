@@ -1,8 +1,8 @@
-package Controlador;
+package controlador;
 
-import Modelo.Ruleta;
-import Modelo.Resultado;
-import Modelo.Usuario;
+import modelo.Ruleta;
+import modelo.Resultado;
+import modelo.Usuario;
 
 public class RuletaController {
     private final Ruleta ruleta;

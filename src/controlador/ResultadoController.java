@@ -1,6 +1,6 @@
-package Controlador;
+package controlador;
 
-import Modelo.Resultado;
+import modelo.Resultado;
 import java.util.List;
 
 public class ResultadoController {

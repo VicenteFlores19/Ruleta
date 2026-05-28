@@ -1,7 +1,7 @@
-package Vista;
+package vista;
 
-import Controlador.ResultadoController;
-import Modelo.Resultado;
+import controlador.ResultadoController;
+import modelo.Resultado;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;

@@ -1,7 +1,7 @@
-package Vista;
+package vista;
 
-import Controlador.RuletaController;
-import Controlador.SessionController;
+import controlador.RuletaController;
+import controlador.SessionController;
 
 import javax.swing.*;
 import java.awt.*;

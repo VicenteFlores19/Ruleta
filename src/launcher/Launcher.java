@@ -1,7 +1,7 @@
-package Launcher;
+package launcher;
 
-import Controlador.SessionController;
-import Vista.VentanaLogin;
+import controlador.SessionController;
+import vista.VentanaLogin;
 
 public class Launcher {
     public static void main(String[] args) {

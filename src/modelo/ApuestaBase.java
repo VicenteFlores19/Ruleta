@@ -1,4 +1,4 @@
-package Modelo;
+package modelo;
 
 public abstract class ApuestaBase {
     protected int montoApostado;
@@ -9,7 +9,6 @@ public abstract class ApuestaBase {
         this.etiqueta = etiqueta;
     }
 
-    // El método polimórfico que las hijas deben implementar
     public abstract boolean acierta(int numero, String color);
 
     public int getMontoApostado() { return montoApostado; }

@@ -37,7 +37,7 @@ public class Ruleta {
     }
 
     public int girar() {
-        return rng.nextInt(37);
+        return rng.nextInt(37); // Genera de 0 a 36
     }
 
     /**
@@ -53,43 +53,40 @@ public class Ruleta {
     }
 
     /**
-     * Evalúa la apuesta usando el ENUM.
+     * NUEVO: Método auxiliar para determinar el color como texto.
+     * Necesario para enviarlo a la superclase ApuestaBase.
      */
-    public int evaluarApuesta(int numero, TipoDeApuesta tipo, int monto) {
-        // Regla de oro del casino: Si sale 0, las apuestas simples pierden.
+    public String colorDe(int numero) {
         if (numero == 0) {
-            this.saldo -= monto;
-            return -monto;
+            return "Verde";
         }
-
-        boolean gana = false;
-
-        // Evaluamos usando el Enum en lugar del char
-        switch (tipo) {
-            case PAR: gana = (numero % 2 == 0); break;
-            case IMPAR: gana = (numero % 2 != 0); break;
-            case ROJO: gana = esRojo(numero); break;
-            case NEGRO: gana = !esRojo(numero); break;
-        }
-
-        // Ajustamos el saldo según el resultado
-        if (gana) {
-            this.saldo += monto;
-            return monto;
-        } else {
-            this.saldo -= monto;
-            return -monto;
-        }
+        return esRojo(numero) ? "Rojo" : "Negro";
     }
 
-    public boolean verificarGanador(int numero, TipoDeApuesta apuesta) {
-        if (numero == 0) return false; // El 0 siempre pierde en apuestas simples
+    /**
+     * NUEVO: Se aplica el Polimorfismo.
+     * Reemplaza a los antiguos evaluarApuesta y verificarGanador.
+     * Ya no hay Enum ni bloques Switch.
+     */
+    public int evaluarApuesta(ApuestaBase apuesta) {
 
-        return switch (apuesta) {
-            case ROJO -> esRojo(numero); // Asumiendo que tienes un método esRojo()
-            case NEGRO -> !esRojo(numero);
-            case PAR -> numero % 2 == 0;
-            case IMPAR -> numero % 2 != 0;
-        };
+        // 1. Calculamos el número y el color una única vez
+        int numero = girar();
+        String color = colorDe(numero);
+
+        // 2. Extraemos el monto directamente del objeto apuesta
+        int monto = apuesta.getMontoApostado();
+
+        // 3. Late Binding: El objeto ejecuta su propio método acierta
+        boolean gana = apuesta.acierta(numero, color);
+
+        // 4. Ajustamos el saldo según el resultado
+        if (gana) {
+            this.saldo += monto;
+            return monto; // Retorna lo que ganó
+        } else {
+            this.saldo -= monto;
+            return -monto; // Retorna lo que perdió en negativo
+        }
     }
 }

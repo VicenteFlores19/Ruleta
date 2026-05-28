@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45363cf1-b033-47a5-a821-644591463040" name="Changes" comment="creacion inical de la clase estadistica">
-      <change afterPath="$PROJECT_DIR$/src/modelo/ApuestaImpar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modelo/ApuestaNegro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modelo/ApuestaPar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modelo/ApuestaRojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controlador/ResultadoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/ResultadoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controlador/RuletaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/RuletaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controlador/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Launcher/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/launcher/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modelo/ApuestaBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/ApuestaBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modelo/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Estadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modelo/Resultado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Resultado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modelo/Ruleta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Ruleta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Modelo/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vista/VentanaHistorial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/VentanaHistorial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vista/VentanaJuego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/VentanaJuego.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vista/VentanaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/VentanaLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vista/VentanaMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/VentanaMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vista/VentanaRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/VentanaRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Estadistica.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +79,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Estadisticas",
+    "git-widget-placeholder": "lab07",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",

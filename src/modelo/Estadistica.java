@@ -7,8 +7,6 @@ public class Estadistica {
 	private int victorias;
 	private double porcentajeVictorias;
 	private int rachaMaxima;
-
-	// 1. Cambiado de TipoDeApuesta a String
 	private String tipoMasJugado;
 
 	public Estadistica() {
@@ -16,19 +14,20 @@ public class Estadistica {
 		this.victorias = 0;
 		this.porcentajeVictorias = 0.0;
 		this.rachaMaxima = 0;
-		this.tipoMasJugado = "Ninguna"; // Valor por defecto
+		this.tipoMasJugado = "Ninguna";
 	}
 
-	// --- GETTERS ---
 	public int getTotalJugadas() { return totalJugadas; }
 	public int getVictorias() { return victorias; }
 	public double getPorcentajeVictorias() { return porcentajeVictorias; }
 	public int getRachaMaxima() { return rachaMaxima; }
-
-	// 2. Retorna String
 	public String getTipoMasJugado() { return tipoMasJugado; }
 
-	public void calcular(List<Resultado> historial) {
+	// Cambiado para recibir la abstracción
+	public void calcular(IRepositorioResultados repositorio) {
+		// Le pedimos los datos al repositorio
+		List<Resultado> historial = repositorio.obtenerTodos();
+
 		if (historial == null || historial.isEmpty()) {
 			return;
 		}
@@ -51,7 +50,6 @@ public class Estadistica {
 				rachaActual = 0;
 			}
 
-			// 3. Evaluamos el String devuelto por Resultado
 			switch (r.getTipoApuesta().toUpperCase()) {
 				case "ROJO" -> contRojo++;
 				case "NEGRO" -> contNegro++;
@@ -62,7 +60,6 @@ public class Estadistica {
 
 		this.porcentajeVictorias = ((double) this.victorias / this.totalJugadas) * 100.0;
 
-		// 4. Asignamos la apuesta favorita como Texto
 		int max = Math.max(Math.max(contRojo, contNegro), Math.max(contPar, contImpar));
 		if (max == 0) this.tipoMasJugado = "Ninguna";
 		else if (max == contRojo) this.tipoMasJugado = "ROJO";

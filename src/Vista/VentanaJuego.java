@@ -2,7 +2,6 @@ package Vista;
 
 import Controlador.RuletaController;
 import Controlador.SessionController;
-import Modelo.TipoDeApuesta;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,7 +60,7 @@ public class VentanaJuego {
         try {
             int monto = Integer.parseInt(txtMonto.getText());
 
-            // CONVERSIÓN MÁGICA: Convertimos el texto seleccionado ("ROJO") al Enum TipoDeApuesta.ROJO
+            // CONVERSIÓN M�?GICA: Convertimos el texto seleccionado ("ROJO") al Enum TipoDeApuesta.ROJO
             String seleccion = cboTipo.getSelectedItem().toString().toUpperCase();
             TipoDeApuesta tipo = TipoDeApuesta.valueOf(seleccion);
 

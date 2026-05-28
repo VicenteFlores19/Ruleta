@@ -3,7 +3,6 @@ package Controlador;
 import Modelo.Ruleta;
 import Modelo.Resultado;
 import Modelo.Usuario;
-import Modelo.TipoDeApuesta;
 
 public class RuletaController {
     private final Ruleta ruleta;

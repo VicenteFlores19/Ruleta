@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45363cf1-b033-47a5-a821-644591463040" name="Changes" comment="creacion inical de la clase estadistica">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ruleta.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JuegoRuleta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ruleta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vista/VentanaJuego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vista/VentanaJuego.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sistema/VentanaSaludo.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/vicei/IdeaProjects/Ruleta" value="3BULI1mch4PzinPE6R1m5mpRwVB" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Historial" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VicenteFlores19&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VicenteFlores19/Ruleta.git&quot;,
+    &quot;accountId&quot;: &quot;e002b014-4164-4bd6-8670-8babce43f6f5&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3BULI1mch4PzinPE6R1m5mpRwVB" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JuegoRuleta.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Ruleta.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Estadisticas&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45363cf1-b033-47a5-a821-644591463040" name="Changes" comment="" />
+      <created>1774538620150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774538620150</updated>
+      <workItem from="1774538621414" duration="7514000" />
+      <workItem from="1775138717023" duration="655000" />
+      <workItem from="1775139414242" duration="6055000" />
+      <workItem from="1775279753337" duration="394000" />
+      <workItem from="1775720116669" duration="7768000" />
+      <workItem from="1776357886080" duration="4686000" />
+    </task>
+    <task id="LOCAL-00001" summary="ruleta codigo base">
+      <option name="closed" value="true" />
+      <created>1774539361873</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1774539361873</updated>
+    </task>
+    <task id="LOCAL-00002" summary="implementacion de la interaccion por consola y flujo de la ronda">
+      <option name="closed" value="true" />
+      <created>1774542231027</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774542231027</updated>
+    </task>
+    <task id="LOCAL-00003" summary="hice el menu de la consola y el ciclo principal del juego">
+      <option name="closed" value="true" />
+      <created>1774621063440</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1774621063440</updated>
+    </task>
+    <task id="LOCAL-00004" summary="implementa interfaz de login y validacion de usuarios">
+      <option name="closed" value="true" />
+      <created>1775721256273</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775721256273</updated>
+    </task>
+    <task id="LOCAL-00005" summary="enlaza login exitoso con nueva ventana de saludo">
+      <option name="closed" value="true" />
+      <created>1775753923949</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775753923949</updated>
+    </task>
+    <task id="LOCAL-00006" summary="crea motor logico de la ruleta aplicando SRP">
+      <option name="closed" value="true" />
+      <created>1775755559436</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1775755559436</updated>
+    </task>
+    <task id="LOCAL-00007" summary="implementa menu principal y botones de navegacion">
+      <option name="closed" value="true" />
+      <created>1775756478484</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775756478484</updated>
+    </task>
+    <task id="LOCAL-00008" summary="implementa VentanaJuego e integra la logica del motor Ruleta.">
+      <option name="closed" value="true" />
+      <created>1775756872470</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1775756872470</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Blindaje de datos y creacion de emun en paquete modelo">
+      <option name="closed" value="true" />
+      <created>1776360890651</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1776360890652</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Integración de SessionController y vistas MVC conectadas">
+      <option name="closed" value="true" />
+      <created>1776919612350</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776919612350</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Corrección de VentanaMenu e integración de RuletaController MVC">
+      <option name="closed" value="true" />
+      <created>1776920709264</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1776920709264</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Implementación de registro, eliminación y base de datos dinámica de usuarios">
+      <option name="closed" value="true" />
+      <created>1776921589303</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1776921589303</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Sistema completo de usuarios, registro, persistencia de saldo y correcciones de interfaz">
+      <option name="closed" value="true" />
+      <created>1776923378436</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1776923378436</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Implementación de asociación entre Usuario y Resultado">
+      <option name="closed" value="true" />
+      <created>1776963482175</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1776963482175</updated>
+    </task>
+    <task id="LOCAL-00015" summary="registro de historial y asociación Usuario-Resultado">
+      <option name="closed" value="true" />
+      <created>1776964884421</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1776964884421</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Interfaz de historial, ResultadoController y conexión final del menú">
+      <option name="closed" value="true" />
+      <created>1776965432441</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1776965432441</updated>
+    </task>
+    <task id="LOCAL-00017" summary="creacion inical de la clase estadistica">
+      <option name="closed" value="true" />
+      <created>1777573688124</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1777573688124</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ruleta codigo base" />
+    <MESSAGE value="implementacion de la interaccion por consola y flujo de la ronda" />
+    <MESSAGE value="hice el menu de la consola y el ciclo principal del juego" />
+    <MESSAGE value="implementa interfaz de login y validacion de usuarios" />
+    <MESSAGE value="enlaza login exitoso con nueva ventana de saludo" />
+    <MESSAGE value="crea motor logico de la ruleta aplicando SRP" />
+    <MESSAGE value="implementa menu principal y botones de navegacion" />
+    <MESSAGE value="implementa VentanaJuego e integra la logica del motor Ruleta." />
+    <MESSAGE value="Blindaje de datos y creacion de emun en paquete modelo" />
+    <MESSAGE value="Integración de SessionController y vistas MVC conectadas" />
+    <MESSAGE value="Corrección de VentanaMenu e integración de RuletaController MVC" />
+    <MESSAGE value="Implementación de registro, eliminación y base de datos dinámica de usuarios" />
+    <MESSAGE value="Sistema completo de usuarios, registro, persistencia de saldo y correcciones de interfaz" />
+    <MESSAGE value="Implementación de asociación entre Usuario y Resultado" />
+    <MESSAGE value="registro de historial y asociación Usuario-Resultado" />
+    <MESSAGE value="Interfaz de historial, ResultadoController y conexión final del menú" />
+    <MESSAGE value="creacion inical de la clase estadistica" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion inical de la clase estadistica" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

@@ -1,40 +1,47 @@
 package controlador;
 
-import modelo.Ruleta;
-import modelo.Resultado;
-import modelo.Usuario;
+import modelo.*;
 
 public class RuletaController {
     private final Ruleta ruleta;
-    private final SessionController session; // Inyección de dependencia
+    private final SessionController session;
 
     public RuletaController(Ruleta ruleta, SessionController session) {
         this.ruleta = ruleta;
         this.session = session;
     }
 
-    public String jugar(int monto, TipoDeApuesta tipo) {
+    public String jugar(int monto, String tipoSeleccionado) {
         Usuario user = session.getUsuarioActual();
 
         if (user.getSaldo() < monto) {
             return "Saldo insuficiente";
         }
 
+        ApuestaBase apuesta = null;
+        switch (tipoSeleccionado.toUpperCase()) {
+            case "ROJO": apuesta = new ApuestaRojo(monto); break;
+            case "NEGRO": apuesta = new ApuestaNegro(monto); break;
+            case "PAR": apuesta = new ApuestaPar(monto); break;
+            case "IMPAR": apuesta = new ApuestaImpar(monto); break;
+            default: return "Apuesta no válida";
+        }
+
         int numeroGanador = ruleta.girar();
-        boolean gano = ruleta.verificarGanador(numeroGanador, tipo);
-        int ganancia = gano ? monto : -monto; // Ajuste simple: ganas lo apostado o lo pierdes
+        String colorGanador = ruleta.colorDe(numeroGanador);
+
+        boolean gano = apuesta.acierta(numeroGanador, colorGanador);
+        int ganancia = gano ? monto : -monto;
 
         user.setSaldo(user.getSaldo() + ganancia);
 
-        // 4. Registrar en el historial (Iteración 5)
-        Resultado r = new Resultado(numeroGanador, monto, ganancia, tipo);
+        Resultado r = new Resultado(numeroGanador, monto, ganancia, tipoSeleccionado);
         user.agregarResultado(r);
 
         return gano ? "¡Ganaste! Salió el " + numeroGanador : "Perdiste. Salió el " + numeroGanador;
     }
 
     public int getSaldoActual() {
-        // Ahora el saldo se lo pedimos al usuario de la sesión, no a la ruleta
         return session.getUsuarioActual().getSaldo();
     }
 

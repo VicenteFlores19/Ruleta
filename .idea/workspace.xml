@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45363cf1-b033-47a5-a821-644591463040" name="Changes" comment="creacion inical de la clase estadistica">
-      <change beforePath="$PROJECT_DIR$/src/modelo/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Estadistica.java" afterDir="false" />
-    </list>
+    <list default="true" id="45363cf1-b033-47a5-a821-644591463040" name="Changes" comment="creacion inical de la clase estadistica" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

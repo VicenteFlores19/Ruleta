@@ -72,5 +72,5 @@ public class Estadistica {
 		else this.tipoMasJugado = TipoDeApuesta.IMPAR;
 	}
 
-	// sadjaskldja
+	// sadj
 }

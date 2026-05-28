@@ -31,7 +31,7 @@ public class VentanaJuego {
         // Obtenemos el saldo a través del controlador
         lblSaldo = new JLabel("Saldo: $" + ruletaController.getSaldoActual());
 
-        // Las opciones del combo deben coincidir EXACTAMENTE con los nombres de tu Enum
+        // Opciones de texto simples que enviará al controlador
         cboTipo = new JComboBox<>(new String[]{"ROJO", "NEGRO", "PAR", "IMPAR"});
         txtMonto = new JTextField();
 
@@ -60,12 +60,11 @@ public class VentanaJuego {
         try {
             int monto = Integer.parseInt(txtMonto.getText());
 
-            // CONVERSIÓN M�?GICA: Convertimos el texto seleccionado ("ROJO") al Enum TipoDeApuesta.ROJO
-            String seleccion = cboTipo.getSelectedItem().toString().toUpperCase();
-            TipoDeApuesta tipo = TipoDeApuesta.valueOf(seleccion);
+            // Sacamos el texto seleccionado y nos aseguramos de que no sea nulo
+            String seleccion = cboTipo.getSelectedItem() != null ? cboTipo.getSelectedItem().toString() : "";
 
-            // Le pasamos el trabajo al controlador
-            String mensaje = ruletaController.jugar(monto, tipo);
+            // Le pasamos el texto directo al controlador (sin usar Enum)
+            String mensaje = ruletaController.jugar(monto, seleccion);
 
             // Mostramos resultado y actualizamos saldo
             JOptionPane.showMessageDialog(frame, mensaje);

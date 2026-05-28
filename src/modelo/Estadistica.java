@@ -5,16 +5,18 @@ import java.util.List;
 public class Estadistica {
 	private int totalJugadas;
 	private int victorias;
-	private double porcentajeVictorias; // Ajustado a double para los decimales
+	private double porcentajeVictorias;
 	private int rachaMaxima;
-	private TipoDeApuesta tipoMasJugado; // Ajustado al Enum
+
+	// 1. Cambiado de TipoDeApuesta a String
+	private String tipoMasJugado;
 
 	public Estadistica() {
 		this.totalJugadas = 0;
 		this.victorias = 0;
 		this.porcentajeVictorias = 0.0;
 		this.rachaMaxima = 0;
-		this.tipoMasJugado = null;
+		this.tipoMasJugado = "Ninguna"; // Valor por defecto
 	}
 
 	// --- GETTERS ---
@@ -22,14 +24,13 @@ public class Estadistica {
 	public int getVictorias() { return victorias; }
 	public double getPorcentajeVictorias() { return porcentajeVictorias; }
 	public int getRachaMaxima() { return rachaMaxima; }
-	public TipoDeApuesta getTipoMasJugado() { return tipoMasJugado; }
 
-	/**
-	 * Calcula todas las estadísticas basándose en el historial del usuario.
-	 */
+	// 2. Retorna String
+	public String getTipoMasJugado() { return tipoMasJugado; }
+
 	public void calcular(List<Resultado> historial) {
 		if (historial == null || historial.isEmpty()) {
-			return; // Si no ha jugado, no calculamos nada
+			return;
 		}
 
 		this.totalJugadas = historial.size();
@@ -37,40 +38,36 @@ public class Estadistica {
 		int rachaActual = 0;
 		this.rachaMaxima = 0;
 
-		// Contadores para descubrir cuál es la apuesta más frecuente
 		int contRojo = 0, contNegro = 0, contPar = 0, contImpar = 0;
 
 		for (Resultado r : historial) {
-			// 1. Calcular Victorias y Racha
 			if (r.getGanancia() > 0) {
 				this.victorias++;
 				rachaActual++;
 				if (rachaActual > this.rachaMaxima) {
-					this.rachaMaxima = rachaActual; // Guardamos la racha más alta
+					this.rachaMaxima = rachaActual;
 				}
 			} else {
-				rachaActual = 0; // Si pierde, se corta la racha
+				rachaActual = 0;
 			}
 
-			// 2. Contar qué tipo de apuesta hizo
-			switch (r.getTipoApuesta()) {
-				case ROJO -> contRojo++;
-				case NEGRO -> contNegro++;
-				case PAR -> contPar++;
-				case IMPAR -> contImpar++;
+			// 3. Evaluamos el String devuelto por Resultado
+			switch (r.getTipoApuesta().toUpperCase()) {
+				case "ROJO" -> contRojo++;
+				case "NEGRO" -> contNegro++;
+				case "PAR" -> contPar++;
+				case "IMPAR" -> contImpar++;
 			}
 		}
 
-		// 3. Calcular Porcentaje (regla de 3 simple)
 		this.porcentajeVictorias = ((double) this.victorias / this.totalJugadas) * 100.0;
 
-		// 4. Determinar la apuesta favorita (la que tenga el contador más alto)
+		// 4. Asignamos la apuesta favorita como Texto
 		int max = Math.max(Math.max(contRojo, contNegro), Math.max(contPar, contImpar));
-		if (max == contRojo) this.tipoMasJugado = TipoDeApuesta.ROJO;
-		else if (max == contNegro) this.tipoMasJugado = TipoDeApuesta.NEGRO;
-		else if (max == contPar) this.tipoMasJugado = TipoDeApuesta.PAR;
-		else this.tipoMasJugado = TipoDeApuesta.IMPAR;
+		if (max == 0) this.tipoMasJugado = "Ninguna";
+		else if (max == contRojo) this.tipoMasJugado = "ROJO";
+		else if (max == contNegro) this.tipoMasJugado = "NEGRO";
+		else if (max == contPar) this.tipoMasJugado = "PAR";
+		else this.tipoMasJugado = "IMPAR";
 	}
-
-	// sadj
 }

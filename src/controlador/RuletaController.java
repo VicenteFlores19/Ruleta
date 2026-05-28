@@ -5,10 +5,12 @@ import modelo.*;
 public class RuletaController {
     private final Ruleta ruleta;
     private final SessionController session;
+    private final GestorArchivo gestorArchivo; // Agregado para manejar el TXT
 
     public RuletaController(Ruleta ruleta, SessionController session) {
         this.ruleta = ruleta;
         this.session = session;
+        this.gestorArchivo = new GestorArchivo(); // Inicializamos el gestor de archivos
     }
 
     public String jugar(int monto, String tipoSeleccionado) {
@@ -37,6 +39,9 @@ public class RuletaController {
 
         Resultado r = new Resultado(numeroGanador, monto, ganancia, tipoSeleccionado);
         user.agregarResultado(r);
+
+        // Guardamos el resultado físicamente en el archivo historial_apuestas.txt
+        gestorArchivo.guardarResultado(r);
 
         return gano ? "¡Ganaste! Salió el " + numeroGanador : "Perdiste. Salió el " + numeroGanador;
     }

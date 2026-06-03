@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45363cf1-b033-47a5-a821-644591463040" name="Changes" comment="refactorización de Ruleta cumpliendo SRP y DIP">
-      <change beforePath="$PROJECT_DIR$/src/modelo/Ruleta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Ruleta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UML-lab8.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780528204304</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="refactorización de Ruleta cumpliendo SRP y DIP">
+      <option name="closed" value="true" />
+      <created>1780528380776</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1780528380776</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

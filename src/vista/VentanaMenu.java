@@ -3,6 +3,8 @@ package vista;
 import controlador.SessionController;
 import controlador.RuletaController;
 import controlador.ResultadoController;
+import modelo.IRepositorioResultados;
+import modelo.RepositorioArchivo;
 import modelo.Ruleta;
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +27,8 @@ public class VentanaMenu {
      */
     public VentanaMenu(SessionController session) {
         this.session = session;
-        this.ruleta = new Ruleta(0);
+        IRepositorioResultados repo = new RepositorioArchivo();
+        this.ruleta = new Ruleta(0, repo);
         configurarVentana();
     }
 

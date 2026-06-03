@@ -23,7 +23,6 @@ public class Estadistica {
 	public int getRachaMaxima() { return rachaMaxima; }
 	public String getTipoMasJugado() { return tipoMasJugado; }
 
-	// Cambiado para recibir la abstracción
 	public void calcular(IRepositorioResultados repositorio) {
 		// Le pedimos los datos al repositorio
 		List<Resultado> historial = repositorio.obtenerTodos();

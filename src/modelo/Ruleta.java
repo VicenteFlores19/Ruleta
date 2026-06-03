@@ -9,19 +9,25 @@ public class Ruleta {
     private final Random rng;
     private int saldo;
 
+    // NUEVO: Atributo de la interfaz (Abstracción) para aplicar DIP en el Modelo
+    private final IRepositorioResultados repositorio;
+
     /**
-     * Constructor: Prepara la ruleta para un nuevo jugador.
+     * Constructor: Prepara la ruleta con su saldo inicial y su repositorio inyectado.
      * @param saldoInicial El dinero con el que el jugador se sienta a la mesa.
+     * @param repositorio El mecanismo de almacenamiento (Memoria o Archivo).
      */
-    public Ruleta(int saldoInicial) {
+    public Ruleta(int saldoInicial, IRepositorioResultados repositorio) {
         this.rng = new Random();
         this.saldo = saldoInicial;
+        this.repositorio = repositorio; // Inyección de dependencia
     }
 
-    // Constructor por defecto (saldo cero)
-    public Ruleta() {
+    // Constructor por defecto (saldo cero) con repositorio inyectado
+    public Ruleta(IRepositorioResultados repositorio) {
         this.rng = new Random();
         this.saldo = 0;
+        this.repositorio = repositorio; // Inyección de dependencia
     }
 
     // --- GETTERS ---
@@ -53,8 +59,7 @@ public class Ruleta {
     }
 
     /**
-     * NUEVO: Método auxiliar para determinar el color como texto.
-     * Necesario para enviarlo a la superclase ApuestaBase.
+     * Determina el color como texto.
      */
     public String colorDe(int numero) {
         if (numero == 0) {
@@ -64,9 +69,7 @@ public class Ruleta {
     }
 
     /**
-     * NUEVO: Se aplica el Polimorfismo.
-     * Reemplaza a los antiguos evaluarApuesta y verificarGanador.
-     * Ya no hay Enum ni bloques Switch.
+     * Evalúa la apuesta usando polimorfismo y guarda de forma persistente el resultado.
      */
     public int evaluarApuesta(ApuestaBase apuesta) {
 
@@ -80,13 +83,22 @@ public class Ruleta {
         // 3. Late Binding: El objeto ejecuta su propio método acierta
         boolean gana = apuesta.acierta(numero, color);
 
+        int ganancia = gana ? monto : -monto;
+
         // 4. Ajustamos el saldo según el resultado
         if (gana) {
             this.saldo += monto;
-            return monto; // Retorna lo que ganó
         } else {
             this.saldo -= monto;
-            return -monto; // Retorna lo que perdió en negativo
         }
+
+        // NUEVO: La Ruleta se encarga de empaquetar y guardar su propia historia.
+        // Obtenemos el nombre de la clase hija (ej: "ApuestaRojo", "ApuestaPar") como texto.
+        String tipoApuesta = apuesta.getClass().getSimpleName();
+
+        Resultado resultado = new Resultado(numero, monto, ganancia, tipoApuesta);
+        repositorio.guardar(resultado); // Se guarda en el CSV o Memoria automáticamente
+
+        return ganancia; // Retorna el monto ganado o perdido (negativo)
     }
 }

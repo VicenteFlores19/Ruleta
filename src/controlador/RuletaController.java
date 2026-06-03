@@ -6,14 +6,11 @@ public class RuletaController {
     private final Ruleta ruleta;
     private final SessionController session;
 
-    // Aquí inyectamos la interfaz (DIP)
-    private final IRepositorioResultados repositorio;
+    // Eliminamos el repositorio de aquí. ¡El controlador ya no lo necesita!
 
     public RuletaController(Ruleta ruleta, SessionController session) {
         this.ruleta = ruleta;
         this.session = session;
-        // Instanciamos la clase concreta que maneja el CSV
-        this.repositorio = new RepositorioArchivo();
     }
 
     public String jugar(int monto, String tipoSeleccionado) {
@@ -43,8 +40,8 @@ public class RuletaController {
         Resultado r = new Resultado(numeroGanador, monto, ganancia, tipoSeleccionado);
         user.agregarResultado(r);
 
-        // Guardamos usando el contrato de la interfaz
-        repositorio.guardar(r);
+        // Aquí está la magia: El controlador le delega la tarea al Modelo
+        ruleta.registrarResultado(r);
 
         return gano ? "¡Ganaste! Salió el " + numeroGanador : "Perdiste. Salió el " + numeroGanador;
     }

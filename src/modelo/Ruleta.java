@@ -101,4 +101,10 @@ public class Ruleta {
 
         return ganancia; // Retorna el monto ganado o perdido (negativo)
     }
+
+    public void registrarResultado(Resultado resultado) {
+        if (repositorio != null) {
+            repositorio.guardar(resultado);
+        }
+    }
 }

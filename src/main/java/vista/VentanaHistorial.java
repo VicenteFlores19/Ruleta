@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class VentanaHistorial {
     private final JFrame frame = new JFrame("Historial de Jugadas");
-    private final ResultadoController resController; // Dependencia del controlador
+    private final ResultadoController resController; // Dependencia del main.java.controlador
 
     public VentanaHistorial(ResultadoController resController) {
         this.resController = resController;
@@ -24,7 +24,7 @@ public class VentanaHistorial {
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
         JTable tabla = new JTable(modelo);
 
-        // Llenamos la tabla pidiéndole los datos al controlador
+        // Llenamos la tabla pidiéndole los datos al main.java.controlador
         for (Resultado r : resController.obtenerHistorial()) {
             Object[] fila = {
                     r.getNumeroGanador(),

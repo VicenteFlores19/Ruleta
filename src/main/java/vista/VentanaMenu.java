@@ -6,6 +6,7 @@ import controlador.ResultadoController;
 import modelo.IRepositorioResultados;
 import modelo.RepositorioArchivo;
 import modelo.Ruleta;
+import modelo.Usuario; // <-- Importante: Faltaba este import
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,7 +17,7 @@ import java.awt.*;
 public class VentanaMenu {
 
     private final JFrame frame = new JFrame("RULETA - Casino Black Cat");
-    private final SessionController session; // Inyección de dependencia única [cite: 348]
+    private final SessionController session; // Inyección de dependencia única
     private final Ruleta ruleta;             // El modelo del juego
 
     private JLabel lblNombreActivo;
@@ -62,7 +63,7 @@ public class VentanaMenu {
         // Listeners de navegación
         btnJugar.addActionListener(e -> abrirJuego());
         btnPerfil.addActionListener(e -> abrirPerfil());
-        btnHistorial.addActionListener(e -> abrirHistorial()); // Conexión Iteración 05 [cite: 294]
+        btnHistorial.addActionListener(e -> abrirHistorial());
         btnSalir.addActionListener(e -> cerrarSesion());
 
         panel.add(new JLabel("Navegación", SwingConstants.CENTER));
@@ -77,12 +78,10 @@ public class VentanaMenu {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // Formato HTML corregido para evitar etiquetas visibles
         String saludo = "<html><h2>Bienvenido, " + session.getNombreUsuario() + "</h2></html>";
         String info = "<html><p>Use el panel lateral para navegar por el casino.</p></html>";
 
         lblNombreActivo = new JLabel(saludo);
-        // Obtenemos el saldo directamente del usuario de la sesión para mayor trazabilidad
         lblSaldoActivo = new JLabel("Saldo en cuenta: $" + session.getUsuarioActual().getSaldo());
         lblSaldoActivo.setFont(new Font("Arial", Font.BOLD, 14));
 
@@ -93,7 +92,6 @@ public class VentanaMenu {
     }
 
     private void abrirPerfil() {
-        // Obtenemos los datos desde el modelo Usuario para cumplir con el encapsulamiento
         String msg = "Usuario: " + session.getUsuarioActual().getUsername() + "\n" +
                 "Nombre: " + session.getNombreUsuario() + "\n" +
                 "Saldo: $" + session.getUsuarioActual().getSaldo();
@@ -102,11 +100,11 @@ public class VentanaMenu {
         int seleccion = JOptionPane.showOptionDialog(frame, msg, "Gestión de Perfil",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
 
-        if (seleccion == 0) { // Cambiar Nombre
+        if (seleccion == 0) {
             String nuevo = JOptionPane.showInputDialog(frame, "Nuevo nombre:");
             session.getUsuarioActual().setNombre(nuevo);
             lblNombreActivo.setText("<html><h2>Bienvenido, " + session.getNombreUsuario() + "</h2></html>");
-        } else if (seleccion == 1) { // Recargar Saldo
+        } else if (seleccion == 1) {
             String montoStr = JOptionPane.showInputDialog(frame, "Monto a depositar:");
             try {
                 int monto = Integer.parseInt(montoStr);
@@ -120,13 +118,11 @@ public class VentanaMenu {
 
     private void abrirJuego() {
         frame.dispose();
-        // Inyección de dependencias en orden: Ruleta, luego Sesión [cite: 343, 344]
         RuletaController rc = new RuletaController(ruleta, session);
         new VentanaJuego(session, rc).mostrarVentana();
     }
 
     private void abrirHistorial() {
-        // La vista depende del controlador y no del modelo directamente [cite: 326]
         ResultadoController rc = new ResultadoController(session);
         new VentanaHistorial(rc).mostrarVentana();
     }

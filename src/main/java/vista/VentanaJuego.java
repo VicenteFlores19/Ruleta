@@ -28,10 +28,10 @@ public class VentanaJuego {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(4, 2, 10, 10));
 
-        // Obtenemos el saldo a través del controlador
+        // Obtenemos el saldo a través del main.java.controlador
         lblSaldo = new JLabel("Saldo: $" + ruletaController.getSaldoActual());
 
-        // Opciones de texto simples que enviará al controlador
+        // Opciones de texto simples que enviará al main.java.controlador
         cboTipo = new JComboBox<>(new String[]{"ROJO", "NEGRO", "PAR", "IMPAR"});
         txtMonto = new JTextField();
 
@@ -63,7 +63,7 @@ public class VentanaJuego {
             // Sacamos el texto seleccionado y nos aseguramos de que no sea nulo
             String seleccion = cboTipo.getSelectedItem() != null ? cboTipo.getSelectedItem().toString() : "";
 
-            // Le pasamos el texto directo al controlador (sin usar Enum)
+            // Le pasamos el texto directo al main.java.controlador (sin usar Enum)
             String mensaje = ruletaController.jugar(monto, seleccion);
 
             // Mostramos resultado y actualizamos saldo

@@ -1,3 +1,5 @@
+package launcher;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -163,7 +165,7 @@ public class JuegoRuleta {
      * Muestra estadísticas generales de todas las rondas jugadas.
      */
     public static void mostrarEstadisticas() {
-        System.out.println("\n--- ESTAD�?STICAS DEL JUGADOR ---");
+        System.out.println("\n--- ESTAD�?STICAS DEL JUGADOR ---");
         if (historialSize == 0) {
             System.out.println("Aún no has jugado ninguna ronda.");
             return;

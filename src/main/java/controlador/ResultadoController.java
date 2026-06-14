@@ -10,7 +10,7 @@ public class ResultadoController {
         this.session = session;
     }
 
-    // El controlador accede al historial del usuario autenticado en la sesión [cite: 331, 335]
+    // El main.java.controlador accede al historial del usuario autenticado en la sesión [cite: 331, 335]
     public List<Resultado> obtenerHistorial() {
         if (session.hayUsuario()) {
             return session.getUsuarioActual().getHistorial();

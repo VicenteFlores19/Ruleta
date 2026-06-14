@@ -69,7 +69,7 @@ public class SessionController {
     }
 
     public String getNombreUsuario() {
-        // Devuelve el nombre real usando el getter del modelo
+        // Devuelve el nombre real usando el getter del main.java.modelo
         return hayUsuario() ? usuarioActual.getNombre() : "";
     }
 

@@ -6,7 +6,7 @@ public class RuletaController {
     private final Ruleta ruleta;
     private final SessionController session;
 
-    // Eliminamos el repositorio de aquí. ¡El controlador ya no lo necesita!
+    // Eliminamos el repositorio de aquí. ¡El main.java.controlador ya no lo necesita!
 
     public RuletaController(Ruleta ruleta, SessionController session) {
         this.ruleta = ruleta;
@@ -40,7 +40,7 @@ public class RuletaController {
         Resultado r = new Resultado(numeroGanador, monto, ganancia, tipoSeleccionado);
         user.agregarResultado(r);
 
-        // Aquí está la magia: El controlador le delega la tarea al Modelo
+        // Aquí está la magia: El main.java.controlador le delega la tarea al Modelo
         ruleta.registrarResultado(r);
 
         return gano ? "¡Ganaste! Salió el " + numeroGanador : "Perdiste. Salió el " + numeroGanador;

@@ -41,6 +41,10 @@ public class Ruleta {
         return saldo;
     }
 
+    public void depositar(int monto) {
+        this.saldo = this.saldo + monto;
+    }
+
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }

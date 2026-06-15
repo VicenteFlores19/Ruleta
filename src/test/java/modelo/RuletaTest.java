@@ -40,4 +40,15 @@ class RuletaTest {
         // Assert: Verificamos que 1000 + 500 sea exactamente 1500
         assertEquals(1500, ruleta.getSaldo(), "El saldo debería ser 1500 tras depositar 500");
     }
+
+    @Test
+    void testJugar_ApuestaNula_LanzaExcepcion() {
+        Ruleta ruleta = new Ruleta(1000, repoMock);
+
+        Exception excepcion = assertThrows(IllegalArgumentException.class, () -> {
+            ruleta.jugar(null); // Esto saldrá rojo al principio
+        });
+
+        assertEquals("Apuesta requerida", excepcion.getMessage());
+    }
 }

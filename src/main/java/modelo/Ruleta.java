@@ -45,6 +45,12 @@ public class Ruleta {
         this.saldo = this.saldo + monto;
     }
 
+    public void jugar(ApuestaBase apuesta) {
+        if (apuesta == null) {
+            throw new IllegalArgumentException("Apuesta requerida");
+        }
+    }
+
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }

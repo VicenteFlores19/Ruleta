@@ -24,14 +24,13 @@ public class Estadistica {
 	public String getTipoMasJugado() { return tipoMasJugado; }
 
 	public void calcular(IRepositorioResultados repositorio) {
-		// Le pedimos los datos al repositorio
 		List<Resultado> historial = repositorio.obtenerTodos();
 
 		if (historial == null || historial.isEmpty()) {
 			return;
 		}
 
-		this.totalJugadas = historial.size();
+		this.totalJugadas = 0; // Reiniciamos a 0 para no contar los nulls de historial.size()
 		this.victorias = 0;
 		int rachaActual = 0;
 		this.rachaMaxima = 0;
@@ -39,6 +38,13 @@ public class Estadistica {
 		int contRojo = 0, contNegro = 0, contPar = 0, contImpar = 0;
 
 		for (Resultado r : historial) {
+			// Solución al Caso 5: Ignoramos los null en el historial para evitar errores
+			if (r == null || r.getTipoApuesta() == null) {
+				continue;
+			}
+
+			this.totalJugadas++; // Solo sumamos jugadas reales
+
 			if (r.getGanancia() > 0) {
 				this.victorias++;
 				rachaActual++;
@@ -57,7 +63,9 @@ public class Estadistica {
 			}
 		}
 
-		this.porcentajeVictorias = ((double) this.victorias / this.totalJugadas) * 100.0;
+		if (this.totalJugadas > 0) {
+			this.porcentajeVictorias = ((double) this.victorias / this.totalJugadas) * 100.0;
+		}
 
 		int max = Math.max(Math.max(contRojo, contNegro), Math.max(contPar, contImpar));
 		if (max == 0) this.tipoMasJugado = "Ninguna";

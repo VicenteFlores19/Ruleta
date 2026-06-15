@@ -8,7 +8,7 @@ public class Ruleta {
     private final IRepositorioResultados repositorio;
     private final Random random;
 
-    // Constructor actualizado con la validación para pasar el Test 1
+    // Caso 1: Constructor rechaza saldo negativo
     public Ruleta(int saldoInicial, IRepositorioResultados repositorio) {
         if (saldoInicial < 0) {
             throw new IllegalArgumentException("Saldo inicial inválido");
@@ -18,8 +18,25 @@ public class Ruleta {
         this.random = new Random();
     }
 
+    // Caso 2: Depósito incrementa el saldo
+    public void depositar(int monto) {
+        this.saldo = this.saldo + monto;
+    }
+
+    // Casos 3 y 4: Validaciones al intentar jugar
+    public void jugar(ApuestaBase apuesta) {
+        if (apuesta == null) {
+            throw new IllegalArgumentException("Apuesta requerida");
+        }
+
+        if (apuesta.getMontoApostado() > this.saldo) {
+            throw new IllegalArgumentException("Saldo insuficiente");
+        }
+
+        // La lógica del giro y descuento de saldo se implementará más adelante
+    }
+
     public int girar() {
-        // Genera un número entre 0 y 36
         return random.nextInt(37);
     }
 
@@ -27,7 +44,6 @@ public class Ruleta {
         if (numero == 0) {
             return "VERDE";
         }
-        // Lógica simple: pares rojos, impares negros (puedes ajustarlo a las reglas de tu casino)
         return (numero % 2 == 0) ? "ROJO" : "NEGRO";
     }
 
@@ -39,16 +55,6 @@ public class Ruleta {
 
     public int getSaldo() {
         return saldo;
-    }
-
-    public void depositar(int monto) {
-        this.saldo = this.saldo + monto;
-    }
-
-    public void jugar(ApuestaBase apuesta) {
-        if (apuesta == null) {
-            throw new IllegalArgumentException("Apuesta requerida");
-        }
     }
 
     public void setSaldo(int saldo) {

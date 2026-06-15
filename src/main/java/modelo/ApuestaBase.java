@@ -13,4 +13,5 @@ public abstract class ApuestaBase {
 
     public int getMontoApostado() { return montoApostado; }
     public String getEtiqueta() { return etiqueta; }
+
 }
